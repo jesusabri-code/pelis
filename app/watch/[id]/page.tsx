@@ -43,7 +43,7 @@ export default function WatchPage() {
       try {
         // Primero intentar buscar en películas
         const moviesResponse = await fetch(
-          `https://nas.mypelis.site/emby/Items?ParentId=7395ad25fd6ccc51e38fc3a842c6b8bd&api_key=516ea09a9b5d47a0a53d590f47a72124`
+          `https://nas.mypelis.site/emby/Items?ParentId=ed2a25286c558a96e1424971742ca250&api_key=516ea09a9b5d47a0a53d590f47a72124`
         )
         const moviesData = await moviesResponse.json()
         const foundItem = moviesData.Items?.find((item: any) => item.Id === params.id)
@@ -56,7 +56,7 @@ export default function WatchPage() {
 
         // Si no está en películas, buscar en series
         const seriesResponse = await fetch(
-          `https://nas.mypelis.site/emby/Items?ParentId=155afb96767843735a9ee8e8c7699399&api_key=516ea09a9b5d47a0a53d590f47a72124`
+          `https://nas.mypelis.site/emby/Items?ParentId=5ddaa59a73205234890fdcfc683e14ed&api_key=516ea09a9b5d47a0a53d590f47a72124`
         )
         const seriesData = await seriesResponse.json()
         const foundSeries = seriesData.Items?.find((item: any) => item.Id === params.id)
@@ -96,7 +96,7 @@ export default function WatchPage() {
 
         // Si no es ni película ni serie, buscar recursivamente en todas las series por episodios
         const allSeriesContent = await fetch(
-          `https://nas.mypelis.site/emby/Items?ParentId=155afb96767843735a9ee8e8c7699399&api_key=516ea09a9b5d47a0a53d590f47a72124&Recursive=true`
+          `https://nas.mypelis.site/emby/Items?ParentId=5ddaa59a73205234890fdcfc683e14ed&api_key=516ea09a9b5d47a0a53d590f47a72124&Recursive=true`
         )
         const allContent = await allSeriesContent.json()
         const foundEpisode = allContent.Items?.find((item: any) => item.Id === params.id)
@@ -111,7 +111,7 @@ export default function WatchPage() {
             // Buscar la serie padre
             let seriesId = parentId
             const parentResponse = await fetch(
-              `https://nas.mypelis.site/emby/Items?ParentId=155afb96767843735a9ee8e8c7699399&api_key=516ea09a9b5d47a0a53d590f47a72124`
+              `https://nas.mypelis.site/emby/Items?ParentId=5ddaa59a73205234890fdcfc683e14ed&api_key=516ea09a9b5d47a0a53d590f47a72124`
             )
             const parentData = await parentResponse.json()
             const series = parentData.Items?.find((s: any) => s.Id === parentId)
@@ -137,7 +137,7 @@ export default function WatchPage() {
           } else {
             // Buscar todas las series
             const allSeriesResponse = await fetch(
-              `https://nas.mypelis.site/emby/Items?ParentId=155afb96767843735a9ee8e8c7699399&api_key=516ea09a9b5d47a0a53d590f47a72124`
+              `https://nas.mypelis.site/emby/Items?ParentId=5ddaa59a73205234890fdcfc683e14ed&api_key=516ea09a9b5d47a0a53d590f47a72124`
             )
             const allSeriesData = await allSeriesResponse.json()
 

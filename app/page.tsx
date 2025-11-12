@@ -36,14 +36,14 @@ export default function NetflixPortfolio() {
   const fetchContent = async () => {
     try {
       const moviesResponse = await fetch(
-        "https://nas.mypelis.site/emby/Items?ParentId=7395ad25fd6ccc51e38fc3a842c6b8bd&api_key=516ea09a9b5d47a0a53d590f47a72124",
+        "https://nas.mypelis.site/emby/Items?ParentId=ed2a25286c558a96e1424971742ca250&api_key=516ea09a9b5d47a0a53d590f47a72124",
       )
       const moviesData = await moviesResponse.json()
       const movieList = (moviesData.Items || []).map((item: any) => ({ ...item, Type: "Movie" }))
       setMovies(movieList)
 
       const seriesResponse = await fetch(
-        "https://nas.mypelis.site/emby/Items?ParentId=155afb96767843735a9ee8e8c7699399&api_key=516ea09a9b5d47a0a53d590f47a72124",
+        "https://nas.mypelis.site/emby/Items?ParentId=5ddaa59a73205234890fdcfc683e14ed&api_key=516ea09a9b5d47a0a53d590f47a72124",
       )
       const seriesData = await seriesResponse.json()
       const seriesList = (seriesData.Items || []).map((item: any) => ({ ...item, Type: "Series" }))
